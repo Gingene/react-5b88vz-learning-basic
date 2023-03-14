@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import './style.css';
 
 export default function App() {
-  const [showText, setShowText] = useState(false);
+  const [user, setUser] = useState({
+    name: 'John',
+    age: 24,
+    gender: 'male',
+  });
 
+  const changeUserName = () => {
+    setUser({
+      ...user,
+      name: 'Alex',
+    });
+  };
 
   return (
     <div className="App">
-      <button onClick={() => setShowText(!showText)}>Toggle</button>
-      {/* {showText ? <p>Hello World</p> : null} */}
-      {/* {showText ? <SayHello /> : null} */}
-      {showText && <SayHello />}
+      <button onClick={changeUserName}>Click</button>
+      <p>name: {user.name}</p>
+      <p>age: {user.age}</p>
+      <p>gender: {user.gender}</p>
     </div>
   );
 }
-
-const SayHello = () => <h1>Hello</h1>;
